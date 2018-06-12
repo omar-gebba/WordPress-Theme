@@ -77,6 +77,10 @@ function customize_excerpt_length()
     {
         return 20;
     }
+    elseif (is_category())
+    {
+        return 50;
+    }
     else
     {
         return 30;
@@ -144,7 +148,29 @@ add_filter('excerpt_more', 'customize_excerpt_more');
                                     'add_fragment'       => '',
                                     'before_page_number' => '',
                                     'after_page_number'  => ''
-                                
                             ));
       }
   }
+function get_posts_ID()
+{
+    $count_args = array(
+        'category__in'      => get_queried_object_id(),
+        'posts_per_page'    => 25,
+        'order'             => 'rand',
+    );
+
+    $cat_posts = new wp_query($count_args);
+
+    if ($cat_posts->have_posts())
+    {
+        while ($cat_posts->have_posts())
+        {
+            $cat_posts->the_post();
+            return the_ID() . ',';
+        }
+    }
+}
+function posts_id()
+{
+    echo get_posts_ID();
+}

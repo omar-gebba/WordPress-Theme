@@ -101,7 +101,7 @@
                 $same_cat_args = array(
                     'order'             => 'rand',
                     'category__in'      => wp_get_post_categories(get_queried_object_id()),
-                    'posts_per_page'    => 5,
+                    'posts_per_page'    => 10,
                     'post__not_in'      => array(get_queried_object_id()),
                 );
 

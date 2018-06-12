@@ -538,6 +538,50 @@ div.posts
 
 
 /* ********************************************************************* */
+/* start category page */
+
+    div.cats-page .about-cat
+    {
+        background-color:#fff;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        padding-top: 30px;
+    }
+    div.cats-page .about-cat h1
+    {
+        height: auto;
+    }
+    div.cats-page .about-cat div
+    {
+        padding-top: 15px;
+    }
+    div.cats-page .cats-post
+    {
+        background-color: #fff;
+    }
+    div.cats-page .cats-post h3 a,
+    div.cats-page .cats-post div.info a
+    {
+        text-decoration: none;
+    }
+    div.cats-page .cats-post h3
+    {
+        padding: 30px 0;
+    }
+    div.cats-page .cats-post .post-thumb
+    {
+        padding: 20px 0;
+    }
+    div.cats-page .cats-post .cats-content
+    {
+        width: 50%;
+        margin: auto;
+        padding: 10px 0 30px;
+    }
+
+/* end category page */
+
+/* ********************************************************************* */
 /* start footer */
 
     .footer
