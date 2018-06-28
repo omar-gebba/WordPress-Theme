@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<?php include (get_template_directory() . '/includes/breadcrumb.php'); ?>
     <div class='container single-post'>
             <?php 
             if(have_posts()) {
@@ -17,7 +18,7 @@
                             
                             <?php the_post_thumbnail( 'large', ['class' => 'img img-responsiv responsive--full featured-img', 'alt' => 'featured image'] ); ?>
                             <p class='content text-center'>
-                            <?php the_content(); ?>
+                            <?php strip_tags(the_content());?>
                             </p>
                             
                             <hr class='single'>
@@ -121,9 +122,6 @@
                         }
                     echo "</div>";
                 }
-
-            ?>
-                <?php
                 }
                 comments_template();
             } ?>

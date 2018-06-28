@@ -3,22 +3,21 @@
     <div class='row about-cat'>
         <h1 class="col-sm-4 text-center">
             <?php
-                single_cat_title( $prefix = '', $display = true );   
+                single_cat_title( $prefix = '', $display = true );  
+               
                 
             ?>
          </h1>
         <div class="col-sm-4 text-center"><?php echo category_description() ?></div>
         <div class="col-sm-4 text-center">
             Posts: <span><?php echo get_category(get_queried_object_id())->count; ?></span> |
-            Comments: <span>
+            Comments:   <span>
                             <?php 
-                                $comments_args = array(
-                                    'post__in'          => get_queried_object_id(),
-                                    'count'             => true,
-                                );
-                                echo get_comments($comments_args);
+                                comments_count();    // custom function => at functions.php
+                                echo " Or ";
+                                comments_count2();   // custom function => at functions.php
                             ?>
-                            </span>
+                        </span>
     </div>
     </div> 
     <div class='clearfix'></div>
@@ -60,7 +59,7 @@
                             ?>
                             </div>
                             <div class='text-center cats-content'>
-                                <?php the_excerpt();  ?>
+                                <?php the_excerpt(); ?>
                             </div>
                         </div>
                         

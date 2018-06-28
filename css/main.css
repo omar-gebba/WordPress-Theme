@@ -38,6 +38,29 @@ body
 
 /* ********************************************************* */
 
+/* start breadcrumb */
+   .breadcrumb-holder,
+   .breadcrumb-holder
+   {
+       background-color: #e9ecef;
+   }
+   .breadcrumb-holder ol li
+   {
+    padding-right: 5px;
+   }
+   .breadcrumb-holder ol li a
+   {
+       text-decoration: none;
+   }
+   .breadcrumb-holder ol li span
+   {
+       color: #848181
+   }
+
+/* end breadcrumb */
+
+/* ********************************************************* */
+
 /* start index page */
 div.posts
 {
@@ -314,8 +337,6 @@ div.posts
         background-color: #e4e2e2;
     }
 
-
-
 /* strat comments form */
     .img-circle
     {
@@ -578,8 +599,110 @@ div.posts
         margin: auto;
         padding: 10px 0 30px;
     }
+    /* start category-linux */
+    .linux-head,b
+    .public-head
+    {
+        background-color: #fff;
+        margin-top: 50;
+        margin-bottom: 50px;
+        padding-top: 30px;
+        margin-left: 50px;
+    }
+    div.cats-page .linux-head h1
+    {
+        line-height: 10px;
+    }
+    div.linux-post div.linux-thumbnail img,
+    div.public-post div.public-thumbnail img
+    {
+        width: 300px;
+    }
+    div.wedgit-public .wedgit-content span.hot-comment
+        {
+            display: block;
+            font-size: 12px;
+        }
+    /* end category-linux */
 
 /* end category page */
+
+/* ********************************************************************* */
+
+/* start category-linux page */
+    div.linux-side-bar
+    {
+        background-color: #fff;
+        border-left: 2px solid rgb(58, 48, 48);
+    }
+    div.linux-side-bar h3
+    {
+        color: #534646;
+        margin-top: 20px;
+        font-size: 20px;
+        background-color: #eee;
+        padding: 5px 0 5px 10px;
+        
+    }
+    div.linux-side-bar form label
+    {
+        display: none;
+    }
+    div.linux-side-bar form input[type=text]
+    {
+        width: 183px;
+    }
+    div.linux-side-bar form input[type=submit]
+    {
+        cursor: pointer;
+    }
+    div.linux-side-bar form input
+    {
+        border: 1px solid #eee;
+        border-radius: 5px;
+        background-color:#f2eb8b;
+        display: inline;
+    }
+    div.linux-side-bar ul
+    {
+        list-style: none;
+        padding-left: 0;
+        line-height: 2em;
+        letter-spacing: 0.03em;
+    }
+    div.linux-side-bar ul li a
+    {
+        text-decoration: none;
+    }
+    .wedgit-content:nth-of-type(3) h3     
+    {
+        
+    }
+
+/* end category-linux page */
+
+/* ********************************************************************* */
+
+/* start custom sidebar pages */
+    div.wedgit-public
+    {
+        margin-bottom: 30px;
+    }
+    div.wedgit-public .wedgit-title
+    {
+        margin-top: 15px;
+        background-color: #007bfe;
+        padding: 5px;
+        color: #fff;
+    }
+    div.wedgit-public .wedgit-content
+    {
+        border: 2px solid #ccc;
+        border-top: none;
+        padding: 5px;
+    }
+
+/* end custom sidebar pages */
 
 /* ********************************************************************* */
 /* start footer */

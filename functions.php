@@ -68,6 +68,20 @@ function Add_nav_bar()
 
     ));
 }
+ function Add_sidebar()         // function to add sidebar
+ {
+     $sidebar_args = array(
+         'name'         => 'side_bar',
+         'id'           => 'main_sidebar',
+         'description'  => 'main side bar appear every where',
+         'class'        => 'main_sidebar',
+         'before_widget'=> '<div class="wedgit-content">',
+         'after_widget' => '</div>',
+         'before_title' => '<h3 class="wedgit-title">',
+         'after_title'  => '</h3>'
+     );
+     register_sidebar($sidebar_args);
+ }
 /* End custom menu */
 
 // change length of excerpt function 
@@ -81,6 +95,10 @@ function customize_excerpt_length()
     {
         return 50;
     }
+    elseif (is_category( '2' )) // not working
+    {
+        return 10;
+    }
     else
     {
         return 30;
@@ -90,7 +108,7 @@ function customize_excerpt_length()
 function customize_excerpt_more()
 {
     return '  ......';
-}
+} 
 add_filter('excerpt_length', 'customize_excerpt_length');
 add_filter('excerpt_more', 'customize_excerpt_more');
 
@@ -104,6 +122,9 @@ add_filter('excerpt_more', 'customize_excerpt_more');
     add_action('wp_enqueue_scripts','Add_script');
     // Add custom nav-bar
     add_action('init', 'Add_custom_nav');
+    // add sidebar
+    add_action( 'widgets_init', 'Add_sidebar' );
+    // add sidebar
 
    
 ////// custom function 
@@ -151,26 +172,52 @@ add_filter('excerpt_more', 'customize_excerpt_more');
                             ));
       }
   }
-function get_posts_ID()
+function comments_count() //   function to count comments in special category => made by Omar
 {
-    $count_args = array(
-        'category__in'      => get_queried_object_id(),
-        'posts_per_page'    => 25,
-        'order'             => 'rand',
-    );
-
-    $cat_posts = new wp_query($count_args);
-
-    if ($cat_posts->have_posts())
+    if (get_category(get_queried_object_id())->count != 0)
     {
-        while ($cat_posts->have_posts())
-        {
-            $cat_posts->the_post();
-            return the_ID() . ',';
-        }
+        $post_ids = get_posts(array(
+            'posts_per_page'    => -1, // to return all posts
+            'offset'            => 0,
+            'fields'            => 'ids', // Only get post IDs
+            'category'          => get_cat_ID(single_cat_title($prefix = '', $display = false)),
+            'category_name'     => single_cat_title($prefix = '', $display = false),
+        ));
+
+        $comments_args = array(
+            'post__in'          => $post_ids,
+            'count'             => true,
+        );
+        echo get_comments($comments_args);
+    }
+    else
+    {
+        echo 0;
     }
 }
-function posts_id()
+function comments_count2()//another function to count comments in special category => made by El-Zero
 {
-    echo get_posts_ID();
+    $comment_count = 0;
+
+    $comments_count_arrgs = array(
+        'status'   => 'approve',
+    );
+                   
+    $all_comments = get_comments($comments_count_arrgs);
+
+    foreach ($all_comments as $comment)
+    {
+        $post_id = $comment->comment_post_ID;
+
+        if (in_category(single_cat_title($prefix = '', $display = false), $post_id))
+        {
+            $comment_count++;
+        }
+        else
+        {
+            continue;
+        }
+    }
+    echo $comment_count;
 }
+
